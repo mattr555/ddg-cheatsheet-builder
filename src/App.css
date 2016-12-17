@@ -1,0 +1,11 @@
+.header {
+    height: 40px;
+    background-color: #666;
+}
+
+.half {
+    width: 50%;
+    height: 90%;
+    float: left;
+    position: relative;
+}
