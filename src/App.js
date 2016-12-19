@@ -16,7 +16,7 @@ class App extends React.Component {
 
     render(){
         return <div>
-            <div className="header"></div>
+            <div className="header">WYSIWYG DDG Cheatsheet Editor</div>
             <div>
                 <div className="half"><SheetEditor sheet={this.state.sheet} onChange={this.onChange}/></div>
                 <div className="half"><SheetText sheet={this.state.sheet} onChange={this.onChange}/></div>

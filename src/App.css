@@ -1,11 +1,15 @@
 .header {
     height: 40px;
     background-color: #666;
+    color: white;
+    line-height: 40px;
+    padding: 0 10px;
 }
 
 .half {
-    width: 50%;
+    width: 45%;
     height: 90%;
     float: left;
     position: relative;
+    padding: 10px;
 }
