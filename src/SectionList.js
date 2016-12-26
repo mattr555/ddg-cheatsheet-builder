@@ -59,17 +59,41 @@ class SectionList extends React.Component {
         this.props.onChange(JSON.stringify(sheet))
     }
 
+    fieldChange = (pos) => (fieldPos, field, newValue) => {
+        var {sheet} = this.props;
+        sheet.sections[sheet.section_order[pos]][fieldPos][field] = newValue;
+        this.props.onChange(JSON.stringify(sheet))
+    }
+
+    fieldDelete = (pos) => (fieldPos) => {
+        var {sheet} = this.props;
+        sheet.sections[sheet.section_order[pos]].splice(fieldPos, 1);
+        this.props.onChange(JSON.stringify(sheet))
+    }
+
+    fieldAdd = (pos, fields) => {
+        var {sheet} = this.props;
+        var newFields = {}
+        fields.forEach((f) => newFields[f] = '');
+        sheet.sections[sheet.section_order[pos]].push(newFields)
+        this.props.onChange(JSON.stringify(sheet))
+    }
+
     renderSection = (section, i) => {
         const {sheet} = this.props;
         return <Section
             name={section}
             pos={i}
             fields={sheet.sections[section]}
+            field_type={sheet.template_type}
             onNameChange={this.changeSectionName}
             onSectionUp={this.sectionUp}
             onSectionDown={this.sectionDown}
             onDelete={this.sectionDelete}
-            key={section}
+            onFieldChange={this.fieldChange}
+            onFieldDelete={this.fieldDelete}
+            onFieldAdd={this.fieldAdd}
+            key={i}
             />
     }
 
